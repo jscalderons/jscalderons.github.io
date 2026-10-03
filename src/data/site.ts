@@ -44,21 +44,21 @@ export const services = [
 		title: 'Software a medida',
 		summary: 'Aplicaciones web pensadas para tu forma de trabajar: rápidas, seguras y fáciles de usar para tu equipo.',
 		items: ['Sistemas de gestión y paneles de administración', 'Portales para clientes y proveedores', 'Agendamiento, inventario, cotizaciones y más'],
-		stack: ['Laravel', 'Node.js', 'React', 'Angular', 'Vue'],
+		idealFor: ['Consultorios', 'Talleres', 'Distribuidoras', 'Inmobiliarias'],
 	},
 	{
 		id: 'automatizacion',
 		title: 'Integraciones y automatización',
 		summary: 'Haz que tus sistemas hablen entre sí y elimina el trabajo repetitivo que hoy le quita horas a tu equipo.',
 		items: ['Avisos y atención por WhatsApp (API oficial)', 'Catálogo y pedidos por WhatsApp, sincronizados con tu inventario', 'Conexión con CRM, facturación y hojas de cálculo'],
-		stack: ['WhatsApp API', 'APIs REST', 'Webhooks', 'PostgreSQL', 'MySQL'],
+		idealFor: ['Tiendas', 'Restaurantes', 'Peluquerías', 'Ferreterías'],
 	},
 	{
 		id: 'soporte',
 		title: 'Mejora de sistemas existentes',
 		summary: '¿Ya tienes un sistema pero da problemas? Lo diagnostico y lo pongo a punto antes de que te cueste clientes.',
 		items: ['Diagnóstico técnico con plan de acción', 'Corrección de errores y mejoras de rendimiento', 'Mantenimiento y soporte mensual'],
-		stack: ['PHP', 'JavaScript', 'Java', 'Bases de datos', 'Soporte'],
+		idealFor: ['Negocios con sistema propio', 'Webs lentas', 'Proyectos abandonados'],
 	},
 ];
 
@@ -69,18 +69,43 @@ export const process = [
 	{ title: 'Entrega y soporte', text: 'Despliegue, documentación y acompañamiento después del lanzamiento.' },
 ];
 
-export const experience = [
-	{ period: '2023 — hoy', role: 'Coordinador de Desarrollo', company: 'Empresa del sector salud', sector: 'Salud', text: 'Lidero equipos técnicos y el ciclo completo de proyectos digitales que mejoran la experiencia del cliente y los procesos internos.' },
-	{ period: '2021 — 2022', role: 'Frontend Software Engineer II', company: 'Mensajeros Urbanos', sector: 'Logística', text: 'Desarrollo frontend en Angular y React, con apoyo en backend con NestJS.' },
-	{ period: '2021', role: 'Analista Nacional de Desarrollo', company: 'Coomeva Medicina Prepagada', sector: 'Salud', text: 'Proyectos en Laravel, Ionic, Angular y Android.' },
-	{ period: '2018 — 2021', role: 'Desarrollador Full-Stack', company: 'Independiente', sector: 'Freelance', text: 'Sistemas internos para distintas empresas: análisis, arquitectura, desarrollo y soporte con Flutter, Laravel, Vue y React.' },
-	{ period: '2019 — 2020', role: 'Desarrollador', company: 'SIESA E-commerce', sector: 'E-commerce', text: 'Desarrollo full-stack con Yii2, Angular y AngularJS.' },
-	{ period: '2017', role: 'Ingeniero de desarrollo', company: 'Taylor & Johnson', sector: 'Finanzas', text: 'Interfaces para entidades financieras y cooperativas con ASP.NET MVC.' },
+export const highlights = [
+	{ value: '+9 años', text: 'desarrollando software para empresas de salud, logística, comercio electrónico y finanzas.' },
+	{ value: 'Equipos', text: 'Hoy coordino un equipo de desarrollo: sé organizar proyectos y cumplir fechas.' },
+	{ value: 'Pymes', text: 'Desde 2018 trabajo como freelance creando sistemas para negocios de distintos tamaños.' },
+	{ value: 'Formación', text: 'Ingeniería de Sistemas (UNAD) y Análisis y Desarrollo de Sistemas de Información (SENA).' },
 ];
 
-export const stack = [
-	'PHP', 'Laravel', 'JavaScript', 'TypeScript', 'Node.js', 'NestJS', 'Express', 'React', 'Next.js', 'Angular',
-	'Vue.js', 'Flutter', 'Java', 'Spring Boot', 'PostgreSQL', 'MySQL', 'MongoDB', 'Firebase', 'Tailwind CSS', 'Git',
+export const benefits = [
+	'Atención 24/7', 'Menos errores', 'Más ventas', 'Precio claro', 'Soporte incluido',
+	'Citas automáticas', 'Pedidos por WhatsApp', 'Todo conectado', 'Menos trabajo manual',
+];
+
+export const faqs = [
+	{
+		q: '¿Cuánto cuesta?',
+		a: 'Depende de lo que necesites. Tras una conversación corta te envío una propuesta con precio fijo, por escrito y sin costos ocultos. Los proyectos grandes se dividen en fases para que pagues por avance.',
+	},
+	{
+		q: '¿Cuánto tarda un proyecto?',
+		a: 'Una automatización sencilla o una web informativa suelen estar listas en 1 a 3 semanas. Un sistema a medida se entrega por fases de 4 a 6 semanas, y desde la primera fase ya puedes usarlo.',
+	},
+	{
+		q: 'No sé nada de tecnología, ¿es un problema?',
+		a: 'Para nada. Tú me cuentas cómo funciona tu negocio y yo me encargo de la parte técnica. Te explico todo en palabras simples y te enseño a usar lo que construyamos.',
+	},
+	{
+		q: '¿Qué pasa si algo falla después de la entrega?',
+		a: 'Todo proyecto incluye 30 días de garantía para corregir errores sin costo. Después puedes contratar un plan de mantenimiento mensual para que siempre esté funcionando.',
+	},
+	{
+		q: '¿Puedo usar WhatsApp sin que bloqueen mi número?',
+		a: 'Sí. Trabajo con la API oficial de WhatsApp Business, aprobada por Meta, así que tu número y tus clientes están seguros.',
+	},
+	{
+		q: '¿El sistema y los datos son míos?',
+		a: 'Sí. Las cuentas quedan a nombre de tu negocio y al terminar el pago recibes el código y todos los accesos.',
+	},
 ];
 
 export const sectors = ['Salud', 'Logística', 'E-commerce', 'Finanzas'];

@@ -8,7 +8,7 @@
 	--sun: #ffc93c;
 	--line: rgb(17 16 19 / 0.14);
 
-	--font-display: 'Unbounded Variable', 'Arial Black', sans-serif;
+	--font-display: 'Bricolage Grotesque Variable', 'Arial Black', sans-serif;
 	--font-body: 'Hanken Grotesk Variable', system-ui, sans-serif;
 	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 
@@ -71,8 +71,8 @@ h2,
 h3 {
 	font-family: var(--font-display);
 	font-weight: 700;
-	line-height: 1.02;
-	letter-spacing: -0.02em;
+	line-height: 1;
+	letter-spacing: -0.03em;
 	margin: 0;
 }
 

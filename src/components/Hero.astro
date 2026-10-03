@@ -34,14 +34,14 @@ const years = new Date().getFullYear() - site.startYear;
 			<p class="tile__caption">años construyendo software para empresas de distintos sectores</p>
 		</div>
 
-		<div class="tile tile--term" style="--i: 2" aria-hidden="true">
-			<div class="term__bar"><i></i><i></i><i></i><span class="mono">~/jscalderons</span></div>
-			<pre class="term mono"><span class="c-dim">$</span> whoami
-<span class="c-sun">fullstack</span> · <span class="c-coral">freelance</span>
-<span class="c-dim">$</span> automatizar --negocio
-<span class="c-green">✓ tareas repetitivas: 0</span>
-<span class="c-dim">$</span> status
-<span class="c-green">✓ listo para tu proyecto</span><span class="caret"></span></pre>
+		<div class="tile tile--term" style="--i: 2">
+			<span class="mono">Así trabajo contigo</span>
+			<ul class="promises">
+				<li>Te hablo claro, sin tecnicismos</li>
+				<li>Precio fijo antes de empezar</li>
+				<li>Avances que puedes ver y probar</li>
+				<li>Soporte después de entregar</li>
+			</ul>
 		</div>
 
 		<div class="tile tile--place" style="--i: 3">
@@ -224,62 +224,31 @@ const years = new Date().getFullYear() - site.startYear;
 		gap: 16px;
 	}
 
-	.term__bar {
+	.promises {
+		display: grid;
+		gap: 12px;
+	}
+
+	.promises li {
 		display: flex;
-		align-items: center;
-		gap: 6px;
+		gap: 12px;
+		align-items: baseline;
+		font-size: 1.05rem;
+		font-weight: 500;
 	}
 
-	.term__bar i {
-		width: 10px;
-		height: 10px;
+	.promises li::before {
+		content: '✓';
+		flex: none;
+		display: grid;
+		place-items: center;
+		width: 24px;
+		height: 24px;
 		border-radius: 50%;
-		background: #3a3840;
-	}
-
-	.term__bar i:first-child {
-		background: var(--coral);
-	}
-
-	.term__bar span {
-		margin-left: 10px;
-		opacity: 0.5;
-	}
-
-	.term {
-		margin: 0;
-		font-size: 0.875rem;
-		line-height: 1.75;
-		white-space: pre-wrap;
-	}
-
-	.c-dim {
-		color: #77737f;
-	}
-	.c-sun {
-		color: var(--sun);
-	}
-	.c-coral {
-		color: var(--coral);
-	}
-	.c-green {
-		color: #4ce08a;
-	}
-
-	.caret {
-		display: inline-block;
-		width: 0.6em;
-		height: 1.1em;
-		margin-left: 4px;
-		vertical-align: -0.2em;
-		background: #e9e5dc;
-		animation: blink 1s steps(1) infinite;
-	}
-
-	@keyframes blink {
-		50% {
-			opacity: 0;
-		}
+		background: #4ce08a;
+		color: var(--ink);
+		font-weight: 700;
+		font-size: 0.8rem;
 	}
 
 	/* Lugar */

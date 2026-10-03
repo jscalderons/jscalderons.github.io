@@ -1,13 +1,13 @@
 ---
-import { stack } from '../data/site';
+import { benefits } from '../data/site';
 
-const half = Math.ceil(stack.length / 2);
-const rows = [stack.slice(0, half), stack.slice(half)];
+const half = Math.ceil(benefits.length / 2);
+const rows = [benefits.slice(0, half), benefits.slice(half)];
 ---
 
-<section class="stack" aria-label="Tecnologías">
+<section class="stack" aria-label="Beneficios">
 	<ul class="sr-only">
-		{stack.map((t) => <li>{t}</li>)}
+		{benefits.map((t) => <li>{t}</li>)}
 	</ul>
 	{rows.map((row, r) => (
 		<div class:list={['marquee', { 'marquee--reverse': r === 1 }]} aria-hidden="true">

@@ -24,9 +24,12 @@ const accentText = ['#fff', 'var(--ink)', 'var(--ink)'];
 				<ul class="service__items">
 					{s.items.map((item) => <li>{item}</li>)}
 				</ul>
-				<ul class="service__stack mono">
-					{s.stack.map((t) => <li>{t}</li>)}
-				</ul>
+				<div class="service__ideal">
+					<span class="mono">Ideal para</span>
+					<ul class="service__stack">
+						{s.idealFor.map((t) => <li>{t}</li>)}
+					</ul>
+				</div>
 				<a class="service__link" href={site.whatsapp} target="_blank" rel="noopener">
 					Cotizar este servicio <Icon name="arrow" />
 				</a>
@@ -119,18 +122,30 @@ const accentText = ['#fff', 'var(--ink)', 'var(--ink)'];
 		font-family: var(--font-mono);
 	}
 
+	.service__ideal {
+		display: grid;
+		gap: 8px;
+		margin-top: auto;
+	}
+
+	.service__ideal .mono {
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.75rem;
+	}
+
 	.service__stack {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 6px;
-		margin-top: auto;
 	}
 
 	.service__stack li {
 		padding: 4px 10px;
 		border: 1px solid currentColor;
 		border-radius: 999px;
-		font-size: 0.75rem;
+		font-size: 0.85rem;
+		font-weight: 500;
 	}
 
 	.service__link {

@@ -1,29 +1,30 @@
 ---
-import { experience } from '../data/site';
+import { site, highlights } from '../data/site';
 ---
 
-<section class="section exp" id="experiencia">
-	<div class="container">
+<section class="section exp" id="sobre-mi">
+	<div class="container exp__inner">
 		<div class="section-head reveal">
-			<p class="eyebrow">Trayectoria</p>
-			<h2 class="section-title">Experiencia que respalda tu proyecto</h2>
+			<p class="eyebrow">Sobre mí</p>
+			<h2 class="section-title">Experiencia de empresa, trato de persona a persona</h2>
+			<p class="exp__lead">
+				Soy {site.name}, desarrollador en {site.location}. He trabajado en empresas grandes y con negocios pequeños,
+				y eso me permite darte soluciones serias sin complicarte la vida.
+			</p>
 		</div>
 
-		<ol class="timeline">
-			{experience.map((job, i) => (
-				<li class="job reveal" style={`--delay: ${Math.min(i, 3) * 0.06}s`}>
-					<span class="job__period mono">{job.period}</span>
-					<div class="job__main">
-						<h3 class="job__role">{job.role}</h3>
-						<p class="job__text">{job.text}</p>
-					</div>
-					<div class="job__meta">
-						<span class="job__company">{job.company}</span>
-						<span class="job__sector mono">{job.sector}</span>
-					</div>
+		<ul class="highlights">
+			{highlights.map((h, i) => (
+				<li class="highlight reveal" style={`--delay: ${i * 0.06}s`}>
+					<span class="highlight__value">{h.value}</span>
+					<p>{h.text}</p>
 				</li>
 			))}
-		</ol>
+		</ul>
+
+		<a class="exp__more reveal" href={site.linkedin} target="_blank" rel="noopener">
+			Ver mi trayectoria completa en LinkedIn →
+		</a>
 	</div>
 </section>
 
@@ -39,80 +40,62 @@ import { experience } from '../data/site';
 		color: var(--sun);
 	}
 
-	.timeline {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		border-top: 1px solid rgb(243 239 230 / 0.2);
+	.exp__lead {
+		max-width: 52ch;
+		font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+		color: rgb(243 239 230 / 0.78);
 	}
 
-	.job {
+	.highlights {
 		display: grid;
-		grid-template-columns: 160px 1fr auto;
-		gap: 12px 32px;
-		align-items: baseline;
-		padding: 28px 0;
-		border-bottom: 1px solid rgb(243 239 230 / 0.2);
-		transition: padding 0.35s var(--ease);
+		grid-template-columns: repeat(4, 1fr);
+		gap: 14px;
 	}
 
-	.job:hover {
-		padding-left: 12px;
+	.highlight {
+		display: grid;
+		align-content: start;
+		gap: 12px;
+		padding: 26px;
+		border: 1px solid rgb(243 239 230 / 0.2);
+		border-radius: 22px;
+		transition: border-color 0.3s, transform 0.35s var(--ease);
 	}
 
-	.job:hover .job__role {
+	.highlight:hover {
+		border-color: var(--sun);
+		transform: translateY(-4px);
+	}
+
+	.highlight__value {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: clamp(1.8rem, 3vw, 2.4rem);
+		line-height: 1;
+		letter-spacing: -0.03em;
 		color: var(--sun);
 	}
 
-	.job__period {
-		color: rgb(243 239 230 / 0.6);
+	.highlight p {
+		color: rgb(243 239 230 / 0.78);
 	}
 
-	.job__main {
-		display: grid;
-		gap: 8px;
-	}
-
-	.job__role {
-		font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-		line-height: 1.15;
-		transition: color 0.25s;
-	}
-
-	.job__text {
-		color: rgb(243 239 230 / 0.72);
-		max-width: 60ch;
-	}
-
-	.job__meta {
-		display: grid;
-		justify-items: end;
-		gap: 6px;
-		text-align: right;
-	}
-
-	.job__company {
+	.exp__more {
+		display: inline-block;
+		margin-top: 36px;
 		font-weight: 700;
+		text-underline-offset: 4px;
 	}
 
-	.job__sector {
-		padding: 3px 10px;
-		border-radius: 999px;
-		background: rgb(243 239 230 / 0.1);
-		font-size: 0.75rem;
-	}
-
-	@media (max-width: 760px) {
-		.job {
-			grid-template-columns: 1fr;
+	@media (max-width: 960px) {
+		.highlights {
+			grid-template-columns: 1fr 1fr;
 		}
-		.job__meta {
-			grid-row: 2;
-			justify-items: start;
-			text-align: left;
-			display: flex;
-			gap: 10px;
-			align-items: center;
+	}
+
+	@media (max-width: 560px) {
+		.highlights {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
