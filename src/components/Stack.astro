@@ -1,0 +1,84 @@
+---
+import { stack } from '../data/site';
+
+const half = Math.ceil(stack.length / 2);
+const rows = [stack.slice(0, half), stack.slice(half)];
+---
+
+<section class="stack" aria-label="Tecnologías">
+	<ul class="sr-only">
+		{stack.map((t) => <li>{t}</li>)}
+	</ul>
+	{rows.map((row, r) => (
+		<div class:list={['marquee', { 'marquee--reverse': r === 1 }]} aria-hidden="true">
+			<div class="marquee__track">
+				{[...row, ...row].map((t) => (
+					<span class="marquee__item">{t}<span class="star">✦</span></span>
+				))}
+			</div>
+		</div>
+	))}
+</section>
+
+<style>
+	.stack {
+		padding-block: 10px;
+		background: var(--ink);
+		color: var(--paper);
+		transform: rotate(-1.5deg);
+		margin-inline: -20px;
+		border-block: 2px solid var(--ink);
+	}
+
+	.marquee {
+		overflow: hidden;
+		padding-block: 6px;
+	}
+
+	.marquee--reverse {
+		background: var(--sun);
+		color: var(--ink);
+	}
+
+	.marquee__track {
+		display: flex;
+		width: max-content;
+		animation: scroll 40s linear infinite;
+	}
+
+	.marquee--reverse .marquee__track {
+		animation-direction: reverse;
+	}
+
+	.marquee__item {
+		display: inline-flex;
+		align-items: center;
+		gap: 28px;
+		padding-right: 28px;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+		white-space: nowrap;
+		letter-spacing: -0.02em;
+	}
+
+	.star {
+		color: var(--coral);
+		font-size: 0.6em;
+	}
+
+	@keyframes scroll {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		white-space: nowrap;
+	}
+</style>

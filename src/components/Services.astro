@@ -1,0 +1,159 @@
+---
+import Icon from './Icon.astro';
+import { site, services } from '../data/site';
+
+const accents = ['var(--blue)', 'var(--coral)', 'var(--sun)'];
+const accentText = ['#fff', 'var(--ink)', 'var(--ink)'];
+---
+
+<section class="section container" id="servicios">
+	<div class="section-head reveal">
+		<p class="eyebrow">Servicios</p>
+		<h2 class="section-title">Lo que puedo hacer por tu empresa</h2>
+	</div>
+
+	<div class="services">
+		{services.map((s, i) => (
+			<article
+				class="service reveal"
+				style={`--delay: ${i * 0.1}s; --accent: ${accents[i]}; --accent-text: ${accentText[i]}`}
+			>
+				<span class="service__num">0{i + 1}</span>
+				<h3 class="service__title">{s.title}</h3>
+				<p class="service__summary">{s.summary}</p>
+				<ul class="service__items">
+					{s.items.map((item) => <li>{item}</li>)}
+				</ul>
+				<ul class="service__stack mono">
+					{s.stack.map((t) => <li>{t}</li>)}
+				</ul>
+				<a class="service__link" href={site.whatsapp} target="_blank" rel="noopener">
+					Cotizar este servicio <Icon name="arrow" />
+				</a>
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.services {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 14px;
+	}
+
+	.service {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		padding: clamp(24px, 3vw, 36px);
+		border: 2px solid var(--ink);
+		border-radius: var(--radius);
+		background: #fffdf8;
+		overflow: hidden;
+		isolation: isolate;
+		transition: color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+	}
+
+	/* Relleno de color que sube al pasar el cursor */
+	.service::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: var(--accent);
+		transform: translateY(101%);
+		transition: transform 0.5s var(--ease);
+	}
+
+	.service:hover {
+		color: var(--accent-text);
+		transform: translateY(-6px);
+		box-shadow: 0 6px 0 var(--ink);
+	}
+
+	.service:hover::before {
+		transform: none;
+	}
+
+	.service__num {
+		font-family: var(--font-display);
+		font-weight: 900;
+		font-size: 3.4rem;
+		line-height: 1;
+		color: var(--accent);
+		-webkit-text-stroke: 2px var(--ink);
+		transition: color 0.35s;
+	}
+
+	.service:hover .service__num {
+		color: transparent;
+		-webkit-text-stroke-color: currentColor;
+	}
+
+	.service__title {
+		font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+		line-height: 1.08;
+	}
+
+	.service__summary {
+		opacity: 0.85;
+	}
+
+	.service__items {
+		display: grid;
+		gap: 10px;
+		padding-top: 18px;
+		border-top: 1px dashed currentColor;
+	}
+
+	.service__items li {
+		display: flex;
+		gap: 10px;
+		font-weight: 500;
+	}
+
+	.service__items li::before {
+		content: '→';
+		font-family: var(--font-mono);
+	}
+
+	.service__stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-top: auto;
+	}
+
+	.service__stack li {
+		padding: 4px 10px;
+		border: 1px solid currentColor;
+		border-radius: 999px;
+		font-size: 0.75rem;
+	}
+
+	.service__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.service__link :global(svg) {
+		width: 18px;
+		height: 18px;
+		transition: transform 0.25s var(--ease);
+	}
+
+	.service__link:hover :global(svg) {
+		transform: translate(3px, -3px);
+	}
+
+	@media (max-width: 960px) {
+		.services {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

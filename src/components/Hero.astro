@@ -1,0 +1,380 @@
+---
+import Icon from './Icon.astro';
+import { site, sectors } from '../data/site';
+
+const years = new Date().getFullYear() - site.startYear;
+---
+
+<section class="hero container" id="top">
+	<div class="bento">
+		<div class="tile tile--intro" style="--i: 0">
+			<p class="eyebrow avail">Disponible para nuevos proyectos</p>
+			<h1 class="hero__title">
+				Software a medida que tu negocio <em>sí</em> usa.
+			</h1>
+			<p class="hero__lead">
+				Soy <strong>{site.name}</strong>, {site.role.toLowerCase()}. Construyo aplicaciones web, sistemas internos y
+				APIs, y ayudo a equipos a desarrollar mejor.
+			</p>
+			<div class="hero__actions">
+				<a class="btn btn--wa" href={site.whatsapp} target="_blank" rel="noopener">
+					<Icon name="whatsapp" />
+					Hablemos por WhatsApp
+				</a>
+				<a class="btn btn--ghost" href="#servicios">
+					Ver servicios
+					<Icon name="arrow" />
+				</a>
+			</div>
+		</div>
+
+		<div class="tile tile--years" style="--i: 1">
+			<span class="mono">desde {site.startYear}</span>
+			<p class="years"><span class="years__plus">+</span>{years}</p>
+			<p class="tile__caption">años construyendo software para empresas reales</p>
+		</div>
+
+		<div class="tile tile--term" style="--i: 2" aria-hidden="true">
+			<div class="term__bar"><i></i><i></i><i></i><span class="mono">~/jscalderons</span></div>
+			<pre class="term mono"><span class="c-dim">$</span> whoami
+<span class="c-sun">fullstack</span> · <span class="c-coral">lead</span>
+<span class="c-dim">$</span> stack --top
+laravel node react angular
+<span class="c-dim">$</span> status
+<span class="c-green">✓ listo para tu proyecto</span><span class="caret"></span></pre>
+		</div>
+
+		<div class="tile tile--place" style="--i: 3">
+			<span class="mono">{site.location}</span>
+			<p class="clock" data-tz={site.timezone}>--:--</p>
+			<p class="tile__caption">Trabajo en remoto con clientes de cualquier lugar.</p>
+		</div>
+
+		<div class="tile tile--sectors" style="--i: 4">
+			<span class="mono">Experiencia en sectores</span>
+			<ul class="chips">
+				{sectors.map((s) => <li>{s}</li>)}
+			</ul>
+		</div>
+
+		<div class="tile tile--now" style="--i: 5">
+			<span class="mono">Modalidad</span>
+			<p class="now__role">Remoto, por proyecto o por horas</p>
+			<p class="now__company">Primera conversación sin costo</p>
+		</div>
+	</div>
+</section>
+
+<script>
+	const clock = document.querySelector<HTMLElement>('.clock');
+	if (clock) {
+		const fmt = new Intl.DateTimeFormat('es-CO', {
+			hour: '2-digit',
+			minute: '2-digit',
+			hour12: false,
+			timeZone: clock.dataset.tz,
+		});
+		const tick = () => (clock.textContent = fmt.format(new Date()));
+		tick();
+		setInterval(tick, 15000);
+	}
+</script>
+
+<style>
+	.hero {
+		padding-block: clamp(20px, 3vw, 32px) clamp(40px, 6vw, 72px);
+	}
+
+	.bento {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: 14px;
+	}
+
+	.tile {
+		position: relative;
+		overflow: hidden;
+		border-radius: var(--radius);
+		padding: clamp(22px, 2.6vw, 34px);
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		opacity: 0;
+		transform: translateY(24px) scale(0.98);
+		animation: tile-in 0.9s var(--ease) forwards;
+		animation-delay: calc(var(--i) * 90ms + 80ms);
+	}
+
+	@keyframes tile-in {
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	/* Intro */
+	.tile--intro {
+		grid-column: span 8;
+		grid-row: span 2;
+		background: #fffdf8;
+		border: 2px solid var(--ink);
+		justify-content: space-between;
+		gap: 28px;
+		padding: clamp(26px, 4vw, 52px);
+	}
+
+	.avail {
+		color: #12873f;
+	}
+
+	.avail::before {
+		animation: pulse 1.8s ease-out infinite;
+		box-shadow: 0 0 0 0 rgb(18 135 63 / 0.5);
+	}
+
+	@keyframes pulse {
+		to {
+			box-shadow: 0 0 0 10px rgb(18 135 63 / 0);
+		}
+	}
+
+	.hero__title {
+		font-size: clamp(2.2rem, 5.6vw, 4.9rem);
+		font-weight: 900;
+		letter-spacing: -0.035em;
+		line-height: 0.98;
+		max-width: 13ch;
+		text-wrap: balance;
+		isolation: isolate;
+	}
+
+	.hero__title em {
+		font-style: normal;
+		color: var(--blue);
+		position: relative;
+		white-space: nowrap;
+	}
+
+	.hero__title em::after {
+		content: '';
+		position: absolute;
+		left: -2%;
+		right: -2%;
+		bottom: 0.04em;
+		height: 0.22em;
+		background: var(--sun);
+		z-index: -1;
+		transform: scaleX(0);
+		transform-origin: left;
+		animation: mark 0.7s var(--ease) 0.9s forwards;
+	}
+
+	@keyframes mark {
+		to {
+			transform: scaleX(1);
+		}
+	}
+
+	.hero__lead {
+		font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+		max-width: 46ch;
+		color: var(--ink-soft);
+	}
+
+	.hero__lead strong {
+		color: var(--ink);
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	/* Años */
+	.tile--years {
+		grid-column: span 4;
+		background: var(--blue);
+		color: #fff;
+		justify-content: space-between;
+	}
+
+	.years {
+		font-family: var(--font-display);
+		font-weight: 900;
+		font-size: clamp(4.5rem, 9vw, 7.5rem);
+		line-height: 0.85;
+		letter-spacing: -0.06em;
+	}
+
+	.years__plus {
+		color: var(--sun);
+	}
+
+	.tile__caption {
+		font-size: 0.98rem;
+		max-width: 26ch;
+	}
+
+	/* Terminal */
+	.tile--term {
+		grid-column: span 4;
+		background: var(--ink);
+		color: #e9e5dc;
+		gap: 16px;
+	}
+
+	.term__bar {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.term__bar i {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #3a3840;
+	}
+
+	.term__bar i:first-child {
+		background: var(--coral);
+	}
+
+	.term__bar span {
+		margin-left: 10px;
+		opacity: 0.5;
+	}
+
+	.term {
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.75;
+		white-space: pre-wrap;
+	}
+
+	.c-dim {
+		color: #77737f;
+	}
+	.c-sun {
+		color: var(--sun);
+	}
+	.c-coral {
+		color: var(--coral);
+	}
+	.c-green {
+		color: #4ce08a;
+	}
+
+	.caret {
+		display: inline-block;
+		width: 0.6em;
+		height: 1.1em;
+		margin-left: 4px;
+		vertical-align: -0.2em;
+		background: #e9e5dc;
+		animation: blink 1s steps(1) infinite;
+	}
+
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	/* Lugar */
+	.tile--place {
+		grid-column: span 4;
+		background: var(--coral);
+		color: var(--ink);
+		justify-content: space-between;
+	}
+
+	.clock {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(2.8rem, 5vw, 4rem);
+		letter-spacing: -0.04em;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+	}
+
+	/* Sectores */
+	.tile--sectors {
+		grid-column: span 4;
+		background: var(--sun);
+		justify-content: space-between;
+	}
+
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.chips li {
+		padding: 8px 16px;
+		border: 2px solid var(--ink);
+		border-radius: 999px;
+		font-weight: 700;
+		background: #fff6dc;
+		transition: transform 0.25s var(--ease), background 0.2s;
+	}
+
+	.chips li:hover {
+		transform: rotate(-4deg) scale(1.05);
+		background: #fff;
+	}
+
+	/* Actualmente */
+	.tile--now {
+		grid-column: span 4;
+		background: var(--paper-2);
+		justify-content: space-between;
+	}
+
+	.now__role {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+	}
+
+	.now__company {
+		color: var(--ink-soft);
+	}
+
+	@media (max-width: 1020px) {
+		.tile--intro {
+			grid-column: span 12;
+			grid-row: auto;
+		}
+		.tile--years,
+		.tile--term,
+		.tile--place,
+		.tile--sectors,
+		.tile--now {
+			grid-column: span 6;
+		}
+		.tile--now {
+			grid-column: span 12;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.bento {
+			gap: 10px;
+		}
+		.tile--years,
+		.tile--term,
+		.tile--place,
+		.tile--sectors,
+		.tile--now {
+			grid-column: span 12;
+		}
+		.hero__actions .btn {
+			width: 100%;
+		}
+	}
+</style>

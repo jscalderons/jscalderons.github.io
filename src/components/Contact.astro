@@ -1,0 +1,184 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section class="section container contact" id="contacto">
+	<div class="cta reveal">
+		<p class="eyebrow">Contacto</p>
+		<h2 class="cta__title">
+			¿Tienes un proyecto en mente?
+			<span class="cta__sub">Hablemos.</span>
+		</h2>
+		<p class="cta__text">
+			Cuéntame qué necesitas y te respondo en menos de 24 horas con los siguientes pasos. La primera conversación
+			no tiene costo.
+		</p>
+		<div class="cta__actions">
+			<a class="btn btn--wa cta__wa" href={site.whatsapp} target="_blank" rel="noopener">
+				<Icon name="whatsapp" />
+				Escríbeme por WhatsApp
+			</a>
+			<a class="btn btn--ghost" href={`mailto:${site.email}`}>
+				<Icon name="mail" />
+				{site.email}
+			</a>
+		</div>
+	</div>
+</section>
+
+<footer class="footer container">
+	<p>© {new Date().getFullYear()} {site.fullName}</p>
+	<ul class="footer__links">
+		<li>
+			<a href={site.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+				<Icon name="linkedin" />
+			</a>
+		</li>
+		<li>
+			<a href={site.github} target="_blank" rel="noopener" aria-label="GitHub">
+				<Icon name="github" />
+			</a>
+		</li>
+	</ul>
+</footer>
+
+<a class="wa-float" href={site.whatsapp} target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+	<Icon name="whatsapp" />
+</a>
+
+<style>
+	.cta {
+		position: relative;
+		display: grid;
+		gap: 28px;
+		padding: clamp(32px, 6vw, 80px);
+		border: 2px solid var(--ink);
+		border-radius: clamp(28px, 5vw, 56px);
+		background:
+			radial-gradient(circle at 92% 12%, var(--sun) 0 90px, transparent 91px),
+			radial-gradient(circle at 100% 100%, var(--coral) 0 160px, transparent 161px),
+			var(--blue);
+		color: #fff;
+		overflow: hidden;
+	}
+
+	.cta .eyebrow {
+		color: var(--sun);
+	}
+
+	.cta__title {
+		font-size: clamp(2.2rem, 7vw, 5.6rem);
+		font-weight: 900;
+		letter-spacing: -0.04em;
+		line-height: 0.95;
+		max-width: 14ch;
+	}
+
+	.cta__sub {
+		display: block;
+		color: var(--sun);
+	}
+
+	.cta__text {
+		max-width: 48ch;
+		font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+		opacity: 0.9;
+	}
+
+	.cta__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.cta .btn--ghost {
+		--fg: #fff;
+		border-color: #fff;
+		overflow-wrap: anywhere;
+	}
+
+	.cta .btn:hover {
+		box-shadow: 4px 4px 0 var(--ink);
+	}
+
+	.cta__wa {
+		font-size: 1.1rem;
+		min-height: 60px;
+		padding-inline: 30px;
+	}
+
+	.footer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+		padding-block: 8px 48px;
+		color: var(--ink-soft);
+		font-size: 0.9375rem;
+	}
+
+	.footer__links {
+		display: flex;
+		gap: 8px;
+	}
+
+	.footer__links a {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border: 2px solid var(--ink);
+		border-radius: 50%;
+		color: var(--ink);
+		transition: background 0.2s, color 0.2s;
+	}
+
+	.footer__links a:hover {
+		background: var(--ink);
+		color: var(--paper);
+	}
+
+	.footer__links :global(svg) {
+		width: 18px;
+		height: 18px;
+	}
+
+	.wa-float {
+		position: fixed;
+		right: 18px;
+		bottom: 18px;
+		z-index: 60;
+		display: grid;
+		place-items: center;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		border: 2px solid var(--ink);
+		background: #25d366;
+		color: var(--ink);
+		box-shadow: 3px 3px 0 var(--ink);
+		transition: transform 0.25s var(--ease);
+	}
+
+	.wa-float:hover {
+		transform: scale(1.08) rotate(-6deg);
+	}
+
+	.wa-float :global(svg) {
+		width: 28px;
+		height: 28px;
+	}
+
+	@media (max-width: 620px) {
+		.cta__actions .btn {
+			width: 100%;
+		}
+		.cta {
+			background:
+				radial-gradient(circle at 96% 4%, var(--sun) 0 50px, transparent 51px),
+				var(--blue);
+		}
+	}
+</style>

@@ -1,0 +1,90 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const links = [
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#proceso', label: 'Proceso' },
+	{ href: '#experiencia', label: 'Experiencia' },
+	{ href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="header">
+	<div class="container header__inner">
+		<a href="#top" class="logo" aria-label="Inicio">
+			<span class="logo__mark">jsc</span><span class="logo__dot">.</span>
+		</a>
+		<nav aria-label="Principal">
+			<ul class="nav">
+				{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+			</ul>
+		</nav>
+		<a class="btn btn--wa header__cta" href={site.whatsapp} target="_blank" rel="noopener">
+			<Icon name="whatsapp" />
+			<span>Escríbeme</span>
+		</a>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		padding-block: 14px;
+		background: color-mix(in srgb, var(--paper) 82%, transparent);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+	}
+
+	.logo {
+		font-family: var(--font-display);
+		font-weight: 900;
+		font-size: 1.5rem;
+		text-decoration: none;
+		letter-spacing: -0.04em;
+	}
+
+	.logo__dot {
+		color: var(--coral);
+	}
+
+	.nav {
+		display: flex;
+		gap: 4px;
+	}
+
+	.nav a {
+		display: block;
+		padding: 8px 14px;
+		border-radius: 999px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: background 0.2s;
+	}
+
+	.nav a:hover {
+		background: var(--paper-2);
+	}
+
+	.header__cta {
+		min-height: 44px;
+		padding: 10px 18px;
+		font-size: 0.9375rem;
+	}
+
+	@media (max-width: 820px) {
+		nav {
+			display: none;
+		}
+	}
+</style>

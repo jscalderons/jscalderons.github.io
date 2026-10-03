@@ -1,0 +1,118 @@
+---
+import { experience } from '../data/site';
+---
+
+<section class="section exp" id="experiencia">
+	<div class="container">
+		<div class="section-head reveal">
+			<p class="eyebrow">Trayectoria</p>
+			<h2 class="section-title">Experiencia que respalda cada proyecto</h2>
+		</div>
+
+		<ol class="timeline">
+			{experience.map((job, i) => (
+				<li class="job reveal" style={`--delay: ${Math.min(i, 3) * 0.06}s`}>
+					<span class="job__period mono">{job.period}</span>
+					<div class="job__main">
+						<h3 class="job__role">{job.role}</h3>
+						<p class="job__text">{job.text}</p>
+					</div>
+					<div class="job__meta">
+						<span class="job__company">{job.company}</span>
+						<span class="job__sector mono">{job.sector}</span>
+					</div>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.exp {
+		background: var(--ink);
+		color: var(--paper);
+		border-radius: clamp(28px, 5vw, 56px);
+		margin-inline: clamp(8px, 1.5vw, 16px);
+	}
+
+	.exp .eyebrow {
+		color: var(--sun);
+	}
+
+	.timeline {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		border-top: 1px solid rgb(243 239 230 / 0.2);
+	}
+
+	.job {
+		display: grid;
+		grid-template-columns: 160px 1fr auto;
+		gap: 12px 32px;
+		align-items: baseline;
+		padding: 28px 0;
+		border-bottom: 1px solid rgb(243 239 230 / 0.2);
+		transition: padding 0.35s var(--ease);
+	}
+
+	.job:hover {
+		padding-left: 12px;
+	}
+
+	.job:hover .job__role {
+		color: var(--sun);
+	}
+
+	.job__period {
+		color: rgb(243 239 230 / 0.6);
+	}
+
+	.job__main {
+		display: grid;
+		gap: 8px;
+	}
+
+	.job__role {
+		font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+		line-height: 1.15;
+		transition: color 0.25s;
+	}
+
+	.job__text {
+		color: rgb(243 239 230 / 0.72);
+		max-width: 60ch;
+	}
+
+	.job__meta {
+		display: grid;
+		justify-items: end;
+		gap: 6px;
+		text-align: right;
+	}
+
+	.job__company {
+		font-weight: 700;
+	}
+
+	.job__sector {
+		padding: 3px 10px;
+		border-radius: 999px;
+		background: rgb(243 239 230 / 0.1);
+		font-size: 0.75rem;
+	}
+
+	@media (max-width: 760px) {
+		.job {
+			grid-template-columns: 1fr;
+		}
+		.job__meta {
+			grid-row: 2;
+			justify-items: start;
+			text-align: left;
+			display: flex;
+			gap: 10px;
+			align-items: center;
+		}
+	}
+</style>
