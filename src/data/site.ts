@@ -6,10 +6,10 @@ const whatsappMessage = 'Hola Jhonathan, vi tu web y me gustaría hablar sobre u
 export const site = {
 	name: 'Jhonathan Calderón',
 	fullName: 'Jhonathan S. Calderón Sánchez',
-	role: 'Desarrollador full-stack & coordinador de desarrollo',
-	title: 'Jhonathan Calderón · Desarrollo web a medida, APIs y consultoría técnica',
+	role: 'Desarrollador full-stack freelance',
+	title: 'Jhonathan Calderón · Software a medida, integraciones y automatización para negocios',
 	description:
-		'Desarrollador full-stack en Cali, Colombia. Construyo aplicaciones web a medida, sistemas internos, APIs e integraciones, y asesoro a equipos de desarrollo. Trabajo en remoto.',
+		'Desarrollador full-stack freelance en Cali, Colombia. Creo software a medida, integraciones y automatizaciones (incluido WhatsApp) para que tu negocio deje de hacer a mano lo que un sistema puede hacer solo.',
 	location: 'Cali, Colombia',
 	timezone: 'America/Bogota',
 	startYear: 2017,
@@ -19,27 +19,46 @@ export const site = {
 	github: 'https://github.com/jscalderons',
 };
 
+export const problems = [
+	{
+		pain: 'Tu equipo copia datos a mano entre Excel, correos y otros sistemas.',
+		fix: 'Conecto tus herramientas para que la información viaje sola y sin errores.',
+	},
+	{
+		pain: 'Respondes por WhatsApp las mismas preguntas todo el día.',
+		fix: 'Automatizo respuestas, recordatorios y avisos con la API oficial de WhatsApp.',
+	},
+	{
+		pain: 'Usas una herramienta que no se ajusta a cómo trabaja tu negocio.',
+		fix: 'Construyo el sistema a tu medida: solo lo que necesitas, fácil de usar.',
+	},
+	{
+		pain: 'Tienes un sistema lento, con fallas o que nadie se atreve a tocar.',
+		fix: 'Lo reviso, lo estabilizo y lo mejoro paso a paso, sin detener tu operación.',
+	},
+];
+
 export const services = [
 	{
 		id: 'web',
-		title: 'Desarrollo web a medida',
-		summary: 'Aplicaciones web rápidas, seguras y fáciles de mantener, desde la idea hasta el despliegue.',
-		items: ['Plataformas y portales a medida', 'Paneles de administración', 'Sitios corporativos de alto rendimiento'],
+		title: 'Software a medida',
+		summary: 'Aplicaciones web pensadas para tu forma de trabajar: rápidas, seguras y fáciles de usar para tu equipo.',
+		items: ['Sistemas de gestión y paneles de administración', 'Portales para clientes y proveedores', 'Agendamiento, inventario, cotizaciones y más'],
 		stack: ['Laravel', 'Node.js', 'React', 'Angular', 'Vue'],
 	},
 	{
-		id: 'apis',
-		title: 'Sistemas internos y APIs',
-		summary: 'Digitalizo y automatizo los procesos de tu empresa para que tu equipo trabaje menos en tareas repetitivas.',
-		items: ['APIs REST e integraciones con terceros', 'Automatización de procesos internos', 'Diseño y optimización de bases de datos'],
-		stack: ['NestJS', 'Spring Boot', 'PostgreSQL', 'MySQL', 'Firebase'],
+		id: 'automatizacion',
+		title: 'Integraciones y automatización',
+		summary: 'Haz que tus sistemas hablen entre sí y elimina el trabajo repetitivo que hoy le quita horas a tu equipo.',
+		items: ['Avisos y atención por WhatsApp (API oficial)', 'Catálogo y pedidos por WhatsApp, sincronizados con tu inventario', 'Conexión con CRM, facturación y hojas de cálculo'],
+		stack: ['WhatsApp API', 'APIs REST', 'Webhooks', 'PostgreSQL', 'MySQL'],
 	},
 	{
-		id: 'consultoria',
-		title: 'Consultoría técnica',
-		summary: 'Acompaño a tu equipo para construir mejor: decisiones técnicas claras y procesos que escalan.',
-		items: ['Arquitectura y elección de tecnologías', 'Revisión de código y buenas prácticas', 'Mentoría y organización de equipos'],
-		stack: ['Arquitectura', 'Code review', 'Scrum', 'Liderazgo'],
+		id: 'soporte',
+		title: 'Mejora de sistemas existentes',
+		summary: '¿Ya tienes un sistema pero da problemas? Lo diagnostico y lo pongo a punto antes de que te cueste clientes.',
+		items: ['Diagnóstico técnico con plan de acción', 'Corrección de errores y mejoras de rendimiento', 'Mantenimiento y soporte mensual'],
+		stack: ['PHP', 'JavaScript', 'Java', 'Bases de datos', 'Soporte'],
 	},
 ];
 

@@ -1,0 +1,71 @@
+---
+import { problems } from '../data/site';
+---
+
+<section class="section container" id="problemas">
+	<div class="section-head reveal">
+		<p class="eyebrow">¿Te suena?</p>
+		<h2 class="section-title">Problemas que puedo resolverte</h2>
+	</div>
+
+	<ul class="problems">
+		{problems.map((p, i) => (
+			<li class="problem reveal" style={`--delay: ${(i % 2) * 0.08}s`}>
+				<p class="problem__pain">{p.pain}</p>
+				<p class="problem__fix"><span class="mono">Solución</span>{p.fix}</p>
+			</li>
+		))}
+	</ul>
+</section>
+
+<style>
+	.problems {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+	}
+
+	.problem {
+		display: grid;
+		grid-template-rows: 1fr auto;
+		gap: 24px;
+		padding: clamp(24px, 3vw, 36px);
+		border-radius: var(--radius);
+		background: var(--paper-2);
+		transition: transform 0.35s var(--ease), background 0.3s;
+	}
+
+	.problem:hover {
+		transform: rotate(-0.6deg) translateY(-4px);
+		background: #fffdf8;
+	}
+
+	.problem__pain {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		text-wrap: balance;
+	}
+
+	.problem__fix {
+		display: grid;
+		gap: 6px;
+		padding-top: 18px;
+		border-top: 2px solid var(--ink);
+		color: var(--ink-soft);
+	}
+
+	.problem__fix .mono {
+		color: var(--blue);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	@media (max-width: 760px) {
+		.problems {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
